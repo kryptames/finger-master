@@ -10,13 +10,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class GameScreen extends ScreenAdapter {
 	private FingerMaster fingergame;
 	private Texture img;
+	private Texture bg;
 	private int x;
     private int y;
+    
     public GameScreen(FingerMaster fingergame) {
         this.fingergame = fingergame;
         img = new Texture("test.png");
+        bg = new Texture("background2.jpg");
         x = 100;
         y = 100;
+        
     }
     
     @Override
@@ -26,6 +30,7 @@ public class GameScreen extends ScreenAdapter {
         SpriteBatch batch = fingergame.batch;
         update(delta);
         batch.begin();
+        batch.draw(bg, 0 , 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.draw(img, x, y);
         batch.end();
     }
@@ -37,4 +42,5 @@ public class GameScreen extends ScreenAdapter {
             x += 10;
         }
     }
+    
 }
