@@ -5,7 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class FingerMaster extends Game {
 	SpriteBatch batch;
-	
+	public static final int WIDTH = 1000;
+    public static final int HEIGHT = 600;
 	 
     @Override
     public void create () {
