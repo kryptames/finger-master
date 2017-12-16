@@ -8,11 +8,18 @@ public class Player {
 	public static int count = 0;
 	Random random = new Random();
 	public int state_time;
-	public Player() {
-		this.state_time = 0;
-	}
-	private void getRandomInt() {
-		count = random.nextInt(50) + 30;
-	}
+	private int x;
+	private int y;
 	
+	public Player(int x, int y) {
+		this.state_time = 0;
+		this.x = x;
+		this.y = y;
+	}
+	public int getX() {
+		return this.x;
+	}
+	public int getY() {
+		return this.y;
+	}
 }
