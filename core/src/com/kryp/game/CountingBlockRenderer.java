@@ -11,18 +11,25 @@ public class CountingBlockRenderer {
 	
 	public CountingBlock countingblock;
 	private SpriteBatch batch;
-	private Texture img;
+	private Texture imgRed;
+	private Texture imgGreen;
 	
 	public CountingBlockRenderer(SpriteBatch batch, CountingBlock countingblock) {
 		this.batch = batch;
 		this.countingblock = countingblock;
-		img = new Texture("block.PNG");
+		imgRed = new Texture("block_red.PNG");
+		imgGreen = new Texture("block_green.png");
 		font = new BitmapFont(Gdx.files.internal("font.fnt"),Gdx.files.internal("font.png"),false);
 		
 	}
 	public void render(float delta) {
-        batch.draw(img, countingblock.getX()-125, countingblock.getY()-125, CountingBlock.WIDTH, CountingBlock.HEIGHT);
-        font.draw(batch, Integer.toString(countingblock.number), countingblock.getX()-50, countingblock.getY()+25);
+		if (countingblock.getX() > FingerMaster.WIDTH / 2) {
+			batch.draw(imgRed, countingblock.getX()-125, countingblock.getY()-125, CountingBlock.WIDTH, CountingBlock.HEIGHT);
+		}
+		else {
+			batch.draw(imgGreen, countingblock.getX()-125, countingblock.getY()-125, CountingBlock.WIDTH, CountingBlock.HEIGHT);
+		}
+        font.draw(batch, Integer.toString(countingblock.number), countingblock.getX()-70, countingblock.getY()+40);
         
     }
 }
