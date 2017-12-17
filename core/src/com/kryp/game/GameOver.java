@@ -21,4 +21,7 @@ public class GameOver {
 	public int getWinner() {
 		return winner;
 	}
+	public void clearWinner() {
+		winner = 0;
+	}
 }

@@ -136,10 +136,7 @@ public class GameScreen extends ScreenAdapter {
 			clearScore();
 			world.round = 1;
 		}
-    	System.out.print(world.getPlayer1().getScore());
-    	System.out.print(world.getPlayer2().getScore());
-    	System.out.print(" ");
-    	System.out.print(world.round);
+    	System.out.print(gameover.getWinner());
     	System.out.println();
     	
     }
@@ -155,5 +152,6 @@ public class GameScreen extends ScreenAdapter {
     public void clearScore() {
     	world.getPlayer1().clearScore();
     	world.getPlayer2().clearScore();
+    	gameover.clearWinner();
     }
 }

@@ -12,7 +12,7 @@ public class CountingBlock {
 	public CountingBlock() {
 	}
 	public void randomNumber() {
-		number = (r.nextInt(30) + 10);
+		number = (r.nextInt(30) + 20);
 	}
 	public void pressed() {
 		number -=1;
