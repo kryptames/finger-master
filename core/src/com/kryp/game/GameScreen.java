@@ -28,11 +28,11 @@ public class GameScreen extends ScreenAdapter {
     
     @Override
     public void render(float delta) {
+    	update(delta);
 		if (gameover.getStage()) {
 			gameoverRenderer.render(delta);
 		}
 		else {
-			update(delta);
 			worldRenderer.render(delta);
 		}
     }
@@ -129,6 +129,9 @@ public class GameScreen extends ScreenAdapter {
 			else {
 				gameover.winner(2);
 			}
+		}
+    	if (Gdx.input.isKeyPressed(Keys.SPACE) && gameover.getStage()) {
+			gameover.changeStage(false);
 			clearStage();
 			clearScore();
 			world.round = 1;
