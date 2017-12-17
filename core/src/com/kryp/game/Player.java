@@ -10,6 +10,7 @@ public class Player {
 	public int state_time;
 	private int x;
 	private int y;
+	private int score;
 	
 	public Player(int x, int y) {
 		this.state_time = 0;
@@ -21,5 +22,14 @@ public class Player {
 	}
 	public int getY() {
 		return this.y;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void plusScore() {
+		score++;
+	}
+	public void clearScore() {
+		score = 0;
 	}
 }

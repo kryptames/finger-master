@@ -74,7 +74,7 @@ public class GameScreen extends ScreenAdapter {
     		if (worldRenderer.count_delta == 0) {
     			world.getBlock().randomNumber();
     		}
-    		if (worldRenderer.count_delta < 500) {
+    		if (worldRenderer.count_delta < 300) {
 	    		if (world.player1down) {
 	    			world.getBlock().x = world.getPlayer1().getX();
 	    			world.getBlock().y = world.getPlayer1().getY();
@@ -103,28 +103,54 @@ public class GameScreen extends ScreenAdapter {
 		    	}
 	    		
 	    		if (world.getBlock().number <= 0) {
-	    			world.player1down = false;
-	    			world.player2down = false;
-	    			world.player1press = false;
-	    			world.player2press = false;
-	    			worldRenderer.count_delta = -1;
-	    			count = 0;
+	    			clearStage();
 	    		}
     		}
     		else {
-    			gameover.changeStage(true);
+    			if (world.player1down) {
+    				world.getPlayer2().plusScore();
+    				world.winnerStage[world.round] = 2;
+    			}
+    			else if (world.player2down) {
+    				world.getPlayer1().plusScore();
+    				world.winnerStage[world.round] = 1;
+    			}
+    			
+    			world.nextRound();
+    			clearStage();
     		}
     		worldRenderer.count_delta++;
     	}
-    	System.out.print(delta);
-        System.out.print(world.player1press);
-        System.out.print(world.player2press);
-        System.out.print(world.player1down);
-        System.out.print(world.player2down);
-        System.out.print(count_delta);
-        System.out.print(" ");
-        System.out.print(world.getBlock().number);
-        System.out.println();
+    	if (world.round == 4 || (world.round == 3 && (world.getPlayer1().getScore() > 1 || world.getPlayer2().getScore() > 1))) {
+			gameover.changeStage(true);
+			if (world.getPlayer1().getScore() > world.getPlayer2().getScore()) {
+				gameover.winner(1);
+			}
+			else {
+				gameover.winner(2);
+			}
+			clearStage();
+			clearScore();
+			world.round = 1;
+		}
+    	System.out.print(world.getPlayer1().getScore());
+    	System.out.print(world.getPlayer2().getScore());
+    	System.out.print(" ");
+    	System.out.print(world.round);
+    	System.out.println();
+    	
     }
     
+    public void clearStage() {
+    	world.player1down = false;
+		world.player2down = false;
+		world.player1press = false;
+		world.player2press = false;
+		worldRenderer.count_delta = -1;
+		count = 0;
+    }
+    public void clearScore() {
+    	world.getPlayer1().clearScore();
+    	world.getPlayer2().clearScore();
+    }
 }

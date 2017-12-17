@@ -21,7 +21,13 @@ public class GameOverRenderer {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.begin();
-        batch.end();
+//        batch.begin();
+//        if (gameover.getWinner() == 1) {
+//        	//show player1 win
+//        }
+//        else if (gameover.getWinner() == 2) {
+//        	//show player2 win
+//        }
+        
 	}
 }

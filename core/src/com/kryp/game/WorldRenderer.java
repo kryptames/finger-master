@@ -19,6 +19,9 @@ public class WorldRenderer {
 	private Texture imgPlayer1Down;
 	private Texture imgPlayer2Pressed;
 	private Texture imgPlayer2Down;
+	private Texture imgdot;
+	private Texture imgdotRed;
+	private Texture imgdotGreen;
 	BitmapFont font_time = new BitmapFont();
 	public int count_delta = 0;
 	
@@ -31,6 +34,9 @@ public class WorldRenderer {
         imgPlayer1Down = new Texture("Player1Down.PNG");
         imgPlayer2Pressed = new Texture("Player2Pressed.PNG");
         imgPlayer2Down = new Texture("Player2Down.PNG");
+        imgdot = new Texture("dot-blank.png");
+        imgdotRed = new Texture("dot-red.png");
+        imgdotGreen = new Texture("dot-green.png");
         countingblockrenderer = new CountingBlockRenderer(fingergame.batch,world.getBlock());
         font_time = new BitmapFont(Gdx.files.internal("font_time.fnt"),Gdx.files.internal("font_time.png"),false);
     }
@@ -57,8 +63,39 @@ public class WorldRenderer {
         }
         if (world.player1down || world.player2down) {
         	countingblockrenderer.render(delta);
-        	font_time.draw(batch, Integer.toString((int)count_delta/100), FingerMaster.WIDTH/2, FingerMaster.HEIGHT-10);
+        	font_time.draw(batch, "TIME: "+ Integer.toString((int)count_delta/100), FingerMaster.WIDTH/2-70, FingerMaster.HEIGHT-60);
         }
+        if (world.round == 1) {
+        	batch.draw(imgdot, fingergame.WIDTH/2-60, fingergame.HEIGHT-50, 40, 40);
+	        batch.draw(imgdot, fingergame.WIDTH/2-20, fingergame.HEIGHT-50, 40, 40);
+	        batch.draw(imgdot, fingergame.WIDTH/2+20, fingergame.HEIGHT-50, 40, 40);
+        }
+        else if (world.round == 2) {
+        	if (world.winnerStage[1] == 1) {
+        		batch.draw(imgdotGreen, fingergame.WIDTH/2-60, fingergame.HEIGHT-50, 40, 40);
+        	}
+        	else {
+        		batch.draw(imgdotRed, fingergame.WIDTH/2-60, fingergame.HEIGHT-50, 40, 40);
+        	}
+        	batch.draw(imgdot, fingergame.WIDTH/2-20, fingergame.HEIGHT-50, 40, 40);
+	        batch.draw(imgdot, fingergame.WIDTH/2+20, fingergame.HEIGHT-50, 40, 40);
+        }
+        else if (world.round == 3) {
+        	if (world.winnerStage[1] == 1) {
+        		batch.draw(imgdotGreen, fingergame.WIDTH/2-60, fingergame.HEIGHT-50, 40, 40);
+        	}
+        	else {
+        		batch.draw(imgdotRed, fingergame.WIDTH/2-60, fingergame.HEIGHT-50, 40, 40);
+        	}
+        	if (world.winnerStage[2] == 1) {
+        		batch.draw(imgdotGreen, fingergame.WIDTH/2-20, fingergame.HEIGHT-50, 40, 40);
+        	}
+        	else {
+        		batch.draw(imgdotRed, fingergame.WIDTH/2-20, fingergame.HEIGHT-50, 40, 40);
+        	}
+	        batch.draw(imgdot, fingergame.WIDTH/2+20, fingergame.HEIGHT-50, 40, 40);
+        }
+        
         batch.end();
     }
 }

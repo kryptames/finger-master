@@ -9,6 +9,8 @@ public class World {
 	private Player player1;
 	private Player player2;
 	private CountingBlock countingblock = new CountingBlock();
+	public int round = 1;
+	public int[] winnerStage = new int[4];
 	
 	World(FingerMaster fingermaster) {
         this.fingergame = fingergame;
@@ -23,5 +25,8 @@ public class World {
 	}
 	public Player getPlayer2() {
 		return player2;
+	}
+	public void nextRound() {
+		round++;
 	}
 }
