@@ -29,11 +29,11 @@ public class WorldRenderer {
         this.fingergame = fingergame;
         batch = fingergame.batch;
         this.world = world;
-        img = new Texture("default.PNG");
-        imgPlayer1Pressed = new Texture("Player1Pressed.PNG");
-        imgPlayer1Down = new Texture("Player1Down.PNG");
-        imgPlayer2Pressed = new Texture("Player2Pressed.PNG");
-        imgPlayer2Down = new Texture("Player2Down.PNG");
+        img = new Texture("default.png");
+        imgPlayer1Pressed = new Texture("Player1Pressed.png");
+        imgPlayer1Down = new Texture("Player1Down.png");
+        imgPlayer2Pressed = new Texture("Player2Pressed.png");
+        imgPlayer2Down = new Texture("Player2Down.png");
         imgdot = new Texture("dot-blank.png");
         imgdotRed = new Texture("dot-red.png");
         imgdotGreen = new Texture("dot-green.png");

@@ -17,7 +17,7 @@ public class CountingBlockRenderer {
 	public CountingBlockRenderer(SpriteBatch batch, CountingBlock countingblock) {
 		this.batch = batch;
 		this.countingblock = countingblock;
-		imgRed = new Texture("block_red.PNG");
+		imgRed = new Texture("block_red.png");
 		imgGreen = new Texture("block_green.png");
 		font = new BitmapFont(Gdx.files.internal("font.fnt"),Gdx.files.internal("font.png"),false);
 		
